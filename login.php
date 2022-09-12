@@ -16,8 +16,16 @@
             $email =$_POST['email'];
             $password=$_POST['pass'];
 
-            echo $email . " ";
-            echo $password;
+            // echo $email . " ";
+            // echo $password;
+
+            //database connection
+            $conn = new mysqli("localhost","root","","login");
+            if($conn->connect_error)
+            {
+                die($conn->connect_error);
+            }
+            echo "Successfully connected";
         }
         ?>
 </body>
