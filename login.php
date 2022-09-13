@@ -25,7 +25,39 @@
             {
                 die($conn->connect_error);
             }
-            echo "Successfully connected";
+            echo "Successfully connected <br>";
+
+            //start login process
+
+            $sql = "SELECT * FROM user WHERE email = '$email'";
+            $result = $conn->query($sql);
+
+            echo "<pre>";
+            print_r($result);
+            echo "</pre>";
+            
+            if($result->num_rows>0)
+            {
+                $row = $result -> fetch_assoc(); //returns 1 row
+           
+                echo "<pre>";
+                print_r($row);
+                echo "</pre>";
+
+                $db_email = $row['email'];
+                $db_password = $row['password'];
+                if($email==$db_email && $password==$db_password)
+                {
+                    echo "login success";
+                }
+                else{
+                    echo "login failed";
+                }
+            }
+            else{
+                echo "No related rows were found!!!";
+            }
+            
         }
         ?>
 </body>
