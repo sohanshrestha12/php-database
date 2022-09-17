@@ -1,3 +1,18 @@
+<?php
+include('db_config.php');
+
+$sql = "SELECT * FROM todo_items";
+$result = $conn->query($sql);
+
+echo "<pre>";
+print_r($result);
+echo "</pre>";
+
+
+
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -27,22 +42,21 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Go To Shopping</td>
-                    <td><button class="btn btn-danger">Delete</button></td>
 
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Go To Shopping</td>
-                    <td><button class="btn btn-danger">Delete</button></td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Go To Shopping</td>
-                    <td><button class="btn btn-danger">Delete</button></td>
-                </tr>
+                <?php while ($row = $result->fetch_assoc()) { ?>
+                    <tr>
+                        <th scope="row"><?php echo $row['id']; ?></th>
+                        <td><?php echo $row['title']; ?></td>
+                        <td><button class="btn btn-danger">Delete</button></td>
+                    </tr>
+                <?php
+                }
+                ?>
+
+
+
+
+
             </tbody>
         </table>
     </div>

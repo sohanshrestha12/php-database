@@ -1,4 +1,6 @@
 <?php
+    include('db_config.php');
+
     if($_SERVER['REQUEST_METHOD'] == "POST")
     {
         echo "<pre>";
@@ -8,5 +10,8 @@
 
         $todo_item = $_POST['todo'];
         echo "You have Entered " . $todo_item . " to the list.<br>";
+        echo "<pre>";
+        print_r($conn);
+        echo "</pre>";
     }
 ?>
